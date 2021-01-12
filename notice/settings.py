@@ -14,7 +14,7 @@ SECRET_KEY = 'scbrfho97jo4&(0z6cz-78lv6-qkzaeq+679b#^hj8*m-di4fn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['notice.pythonanywhere.com']
 
 
 # Application definition
@@ -66,10 +66,10 @@ WSGI_APPLICATION = 'notice.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testing_1',
-        'PASSWORD' : 'Sunish23#',
-        'USER':'root',
-        'HOST':'localhost'
+        'NAME': 'notice$notice',
+        'PASSWORD' : 'Manish28#',
+        'USER':'notice',
+        'HOST':'notice.mysql.pythonanywhere-services.com'
     }
 }
 
@@ -111,3 +111,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'assets')
