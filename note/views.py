@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from .models import Note
 # Create your views here.
 def home(request):
+    return render(request,'home.html')
+def home1(request):
     return render(request,'index.html')
 
 def validate(request):

@@ -15,7 +15,7 @@ SECRET_KEY = 'scbrfho97jo4&(0z6cz-78lv6-qkzaeq+679b#^hj8*m-di4fn'
 DEBUG = True
 
 ALLOWED_HOSTS = ['notice.pythonanywhere.com']
-
+#ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -70,6 +70,11 @@ DATABASES = {
         'PASSWORD' : 'Manish28#',
         'USER':'notice',
         'HOST':'notice.mysql.pythonanywhere-services.com'
+        #'NAME': 'testing_1',
+        #'PASSWORD':"Sunish23#",
+        #'HOST':'localhost',
+        #'USER':'root'
+
     }
 }
 
@@ -111,4 +116,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 STATIC_ROOT = os.path.join(BASE_DIR,'assets')
