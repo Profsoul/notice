@@ -8,85 +8,53 @@
     <title>NOTE</title>
 </head>
 <body>
-{% block content %}
-<div class="container-fluid">
+<div class="container-fluid ">
     <div class = "row m-0 pt-3">
         <div class = "col">
-            <p class="display-8" style="font-size:23px;" ><b>Bus route monitoring</b></p>
+            <p class="display-8" style="font-size:23px;" ><b>NotePad</b></p>
         </div>
         <div class = "col ">
             <div class="d-flex justify-content-end">
-                <button class="btn btn-primary">Table</button>
+                <form method = 'get' action="additem">
+                    <input type="submit" class="btn btn-primary" value="Add item">
+                </form>
+
             </div>
         </div>
     </div>
 </div>
+{% if values %}
+<table class="table table-striped" style="border: 1px solid black;">
+        <thead class= "thead-dark">
+            <tr >
+                <th style="border: 1px solid black;" scope="col">Activity</th>
+                <th style="border: 1px solid black;" scope="col">Info </th>
+                <th style="border: 1px solid black;" scope="col">Status</th>
+                <th style="border: 1px solid black;" scope="col">Update</th>
+            </tr>
+        </thead>
+        <tbody >
 
-<form action="validate" method="post">
-     {% csrf_token %}
-    <div class = "form-group ">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" >Source</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Enter Source Place" name = 'source'>
-        </div>
-    </div>
+        {% for value in values %}
 
-    <div class = 'form-group'>
-        <div class="input-group mb-3 ">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Destination</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Enter Destination Place" name="dest">
-        </div>
-    </div>
+            <tr>
+                {% if  not value.update %}
+                <td style="border: 1px solid black;">{{ value.Activity }}</td>
+                <td style="border: 1px solid black;"> {{ value.Info }}</td>
+                <td style="border: 1px solid black;">{{ value.Status }}</td>
+                <td style="border: 1px solid black;">
+                    <form action="update/{{value.id}}" method="get">
+                        <input type="submit" class="btn btn-primary" value="Finish">
+                    </form>
+                </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+</table>
+{% else %}
+<h3 style=text-align:center;>No data are available</h3>
 
-    <div class = 'form-group'>
-        <div class="input-group mb-3 ">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Amount</span>
-            </div>
-            <input type="number" class="form-control" placeholder="Enter Amount" name="amount">
-        </div>
-    </div>
-
-
-    <div class = "form-group ">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" >Time</span>
-            </div>
-            <input type="time" class="form-control" name="time">
-        </div>
-    </div>
-
-
-    <div class = "form-group ">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" >Date</span>
-            </div>
-            <input type="date" class="form-control" name = 'date'>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" >Noon</span>
-            </div>
-            <select name="Noon" class="form-control">
-                <option value = 'ForeNoon'>ForeNoon</option>
-                <option value = 'AfterNoon`'>AfterNoon</option>
-            </select>
-        </div>
-    </div>
-    <div class = 'form-group'>
-        <div class="d-flex justify-content-center">
-                <input type="submit" class="btn  btn-primary w-25 " value="Submit">
-        </div>
-    </div>
-</form>
-{% endblock %}
+{% endif %}
 </body>
 </html>

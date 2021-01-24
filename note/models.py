@@ -4,7 +4,7 @@ from django.db import models
 class Note(models.Model):
     Time = models.TimeField(auto_now_add=True)
     Date = models.DateField(auto_now_add=True)
-    Source = models.CharField(max_length=60)
-    Destination = models.CharField(max_length=60)
-    Amount = models.IntegerField()
-    Noon = models.CharField(max_length=5)
+    Activity = models.CharField(max_length=60)
+    Info = models.TextField(default=None)
+    Status = models.CharField(max_length=30,default="Unfinished")
+    Update = models.BooleanField(default=False)
